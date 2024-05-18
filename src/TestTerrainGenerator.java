@@ -7,7 +7,7 @@ public class TestTerrainGenerator extends TerrainGenerator{
         TileType main = null;
         BackgroundTileType bg = null;
 
-        if(x > 10 || y > 10) main = Tiles.DIRT;
+        if(x > 10 || y > 10) main = Tiles.REDDIRT;
 
         chunk.mainTilemap.setTile(localX, localY, main);
         chunk.backgroundTilemap.setTile(localX, localY, bg);

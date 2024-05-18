@@ -1,5 +1,6 @@
 public class TileType extends AbstractTileType<TileType>{
     public final BackgroundTileType backgroundType;
+    public String blockType;
 
     private TileType(TileRenderer<TileType> renderer, BackgroundTileType backgroundType) {
         super(renderer);
@@ -10,9 +11,10 @@ public class TileType extends AbstractTileType<TileType>{
         this(renderer, (BackgroundTileType) null);
     }
 
-    public TileType(TileRenderer<TileType> renderer, TileRenderer<BackgroundTileType> bgRenderer){
+    public TileType(TileRenderer<TileType> renderer, TileRenderer<BackgroundTileType> bgRenderer, String name){
         super(renderer);
         this.backgroundType = new BackgroundTileType(bgRenderer, this);
+        this.blockType = name;
     }
 
     public void processCollision(Collider collider, Chunk.Tilemap<TileType> tilemap, Vector2Int localPos){

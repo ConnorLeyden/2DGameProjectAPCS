@@ -3,12 +3,16 @@ import java.awt.event.KeyEvent;
 
 public class KeyboardKeybind extends Keybind {
     private final int keyCode;
+    public static boolean anyKeyPressed = false;
 
     public KeyboardKeybind(int keyCode){
         this.keyCode = keyCode;
         KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher((ke) -> {
             switch (ke.getID()){
-                case KeyEvent.KEY_PRESSED -> keyPressed(ke);
+                case KeyEvent.KEY_PRESSED -> {
+                    keyPressed(ke);
+                    anyKeyPressed = true;
+                }
                 case KeyEvent.KEY_RELEASED -> keyReleased(ke);
             }
             return false;

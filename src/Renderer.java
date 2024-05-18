@@ -55,6 +55,10 @@ public record Renderer(Graphics2D graphics) {
         graphics.setColor(c);
     }
 
+    public void setFont(Font f) {
+        graphics.setFont(f);
+    }
+
     public void drawRect(double posX, double posY, double sizeX, double sizeY) {
         int posXInt = (int) posX;
         int posYInt = (int) posY;

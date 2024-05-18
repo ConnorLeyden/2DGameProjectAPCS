@@ -98,4 +98,8 @@ public class Main {
     public static GameCanvas getCanvas(){
         return canvas;
     }
+
+    public static void printTutorial(int x, int y) {
+
+    }
 }

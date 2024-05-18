@@ -5,7 +5,7 @@ public class OverworldTerrainGenerator extends TerrainGenerator {
     private final double caveWidth = 2;
     private final double caveDepthStart = 10;
     private final double caveDepthEnd = 30;
-
+    private int caveMultiplier = 1;
     public final int seed;
 
     public OverworldTerrainGenerator(int seed){
@@ -32,16 +32,25 @@ public class OverworldTerrainGenerator extends TerrainGenerator {
         double geologicalDepth = (y*yCoefficient) + mainNoise.sample(x, y);
 
         if(geologicalDepth > 0) {
-            main = Tiles.DIRT;
-            bg = Tiles.DIRT.backgroundType;
+            main = Tiles.REDDIRT;
+            bg = Tiles.REDDIRT.backgroundType;
         }
         if(geologicalDepth > 5) {
             main = Tiles.STONE;
             bg = Tiles.STONE.backgroundType;
         }
+        if (geologicalDepth > 200) {
+            main = Tiles.BASALT;
+            bg = Tiles.BASALT.backgroundType;
+        }
 
+        if (geologicalDepth > 200) {
+            caveMultiplier = 2;
+        } else {
+            caveMultiplier = 1;
+        }
         double caveValue = caveNoise.sample(x, y);
-        double caveThreshold = caveWidth * Util.invLerp(caveDepthStart, caveDepthEnd, geologicalDepth);
+        double caveThreshold = caveMultiplier * Util.invLerp(caveDepthStart, caveDepthEnd, geologicalDepth);
 
         if(caveValue > -caveThreshold && caveValue < caveThreshold){
             main = null;
