@@ -17,8 +17,17 @@ public class Tiles {
     );
 
     public static final TileType BASALT = new TileType(
-            new ConstantImageTileRenderer<>("./images/dirt_single.png"),
-            new ConstantImageTileRenderer<>("./images/dirt_single_bg.png"),
+            new ConstantImageTileRenderer<>("./images/basalt_single.png"),
+            new ConstantImageTileRenderer<>("./images/basalt_single_bg.png"),
             "Basalt"
+    );
+
+
+    public static final TileType TREASURE = new TileType(
+            new ConstantImageTileRenderer<>("./images/treasure.png")
+    );
+
+    public static final TileType IRON = new TileType(
+            new ConstantImageTileRenderer<>("./images/iron_single.png")
     );
 }

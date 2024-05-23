@@ -8,10 +8,13 @@ public class Player extends GameObject{
     private boolean isNoClip = false;
     public TileType[] inventory = {Tiles.DIRT, Tiles.REDDIRT, Tiles.STONE, Tiles.BASALT};
     private int selectedInventorySlot = 0;
+
+    private int goldCounter = 0;
     public double zoom = 0.03;
     public double speed = 15;
     public double terminalVelocity = 30;
     public double jumpPower = 10;
+
     public Vector2 gravity = new Vector2(0, 16);
     public Vector2 size = new Vector2(0.8, 1.8);
     public Vector2 pos = new Vector2(0,-50);
@@ -64,7 +67,7 @@ public class Player extends GameObject{
         }
         printCoordinates(r);
         printInventory(r);
-
+        r.graphics().drawString("Gold: "+goldCounter, 10, 120);
     }
 
     public void printTutorial(Renderer r) {
@@ -158,11 +161,18 @@ public class Player extends GameObject{
             selectedInventorySlot = 2;
         }
 
+        if (Input.fourKey.isPressed()) {
+            selectedInventorySlot = 3;
+        }
+
         if (Input.teleport.isPressed()) {
             pos = Renderer.screenToWorldPos(Input.getMousePosition().toVector());
         }
 
         if(Input.use.isPressed()){
+            if (World.getMainTile(mouseTile).equals(Tiles.TREASURE)) {
+                goldCounter++;
+            }
             World.setMainTile(mouseTile, null);
         }
 

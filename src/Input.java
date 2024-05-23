@@ -24,7 +24,7 @@ public class Input {
     public static Keybind oneKey = new KeyboardKeybind(KeyEvent.VK_1);
     public static Keybind twoKey = new KeyboardKeybind(KeyEvent.VK_2);
     public static Keybind threeKey = new KeyboardKeybind(KeyEvent.VK_3);
-
+    public static Keybind fourKey = new KeyboardKeybind(KeyEvent.VK_4);
     public static Vector2Int getMousePosition(){
         Point point = MouseInfo.getPointerInfo().getLocation();
         SwingUtilities.convertPointFromScreen(point, Main.getCanvas());
